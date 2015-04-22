@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<script src="../lib.cssrule.js"></script>
@@ -8,5 +8,11 @@
 </head>
 <body>
 	<div id="div-id" class="div-class">This is a div with an id "div-id" and a class "div-class". </div>
+    <script src="./warn-if-not-loaded-from-server.js"></script>
+    <script>
+        isLoadedFromServer(function () {
+            alert("Please load this sample page from a server.\n\nModern browsers do not allow HTML files loaded straight from the filesystem (file:// URLs) to dynamically change the page's CSS rules like we do!");
+        });
+    </script>
 </body>
 </html>

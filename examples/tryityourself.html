@@ -1,18 +1,41 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+	<style>
+#rule-textarea
+{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 5em;	
+}
+#action-button
+{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+	</style>
 <body>
-	<div id="div-id" class="div-class">This is a div with an id "div-id" and a class "div-class". </div>
+	<div id="div-id" class="div-class">This is a div with an id "div-id" and a class "div-class".</div>
 	<div>
-		<textarea id='rule-textarea'>#div-id { background-color: #ff6600; border: 1px solid #da6; }</textarea>
-		<button id="action-button">Add this rule !</button>
+		<textarea id="rule-textarea">#div-id { background-color: #ff6600; border: 1px solid #da6; }</textarea>
+	</div>
+	<div>
+		<button id="action-button">Add this rule!</button>
 	</div>
 	<script src="../lib.cssrule.js"></script>
+	<script src="./warn-if-not-loaded-from-server.js"></script>
 	<script>
 		// this is quick and dirty
-		document.getElementById("action-button").onclick = function() {
+		document.getElementById("action-button").onclick = function () {
 			var text = document.getElementById("rule-textarea").value;
 			cssrule.add(text);
-		}
+		};
+	</script>
+	<script>
+		isLoadedFromServer(function () {
+			alert("Please load this sample page from a server.\n\nModern browsers do not allow HTML files loaded straight from the filesystem (file:// URLs) to dynamically change the page's CSS rules like we do!");
+		});
 	</script>
 </body>
 </html>
